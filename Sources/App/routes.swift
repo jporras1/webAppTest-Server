@@ -11,6 +11,16 @@ public func routes(_ router: Router) throws {
     router.get("hello") { req in
         return "Hello, world!"
     }
+//
+//    // Basic JSON "Hello, world!" example
+//    router.get("helloAgain") { req in
+//
+//        var json = JSON()
+//        try json.set("Hello", "world")
+//
+//        return json
+//
+//    }
 
     // Example of configuring a controller
     let todoController = TodoController()
