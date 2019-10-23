@@ -11,6 +11,19 @@ public func routes(_ router: Router) throws {
     router.get("hello") { req in
         return "Hello, world!"
     }
+    //Generic Struct that will be a json object.
+    struct User: Content {
+        var name: String
+        var email: String
+    }
+    
+        // Basic JSON "Hello, world!" example
+    router.get("user") { req -> User in
+        return User(
+            name: "Vapor User",
+            email: "user@vapor.codes"
+        )
+    }
 
     // Example of configuring a controller
     let todoController = TodoController()
@@ -18,15 +31,3 @@ public func routes(_ router: Router) throws {
     router.post("todos", use: todoController.create)
     router.delete("todos", Todo.parameter, use: todoController.delete)
 }
-
-
-
-//    // Basic JSON "Hello, world!" example
-//    router.get("helloAgain") { req in
-//
-//        var json = JSON()
-//        try json.set("Hello", "world")
-//
-//        return json
-//
-//    }
